@@ -45,7 +45,7 @@ var oidData = []OIDMapping{
 }
 
 func main() {
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017/")
 
 	client, err := mongo.Connect(context.Background(), clientOptions)
 	if err != nil {
@@ -57,7 +57,7 @@ func main() {
 		}
 	}()
 
-	db := client.Database("Test")
+	db := client.Database("localdb")
 	collection := db.Collection("oids")
 
 	// Insert OID data into the collection

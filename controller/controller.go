@@ -19,12 +19,13 @@ var db *mongo.Database
 
 func InitMongo() (err error) {
 	options := options.Client().ApplyURI("mongodb://localhost:27017/")
+	logger.Log.Println("mongourl- ", options.GetURI())
 	client, err := mongo.Connect(context.Background(), options)
 	if err != nil {
 		logger.Log.Println("err in mongo connect: ", err)
 		return
 	}
-	db = client.Database("Test")
+	db = client.Database("localdb")
 	return err
 }
 
